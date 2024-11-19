@@ -1,4 +1,4 @@
-const { task } = require("hardhat/confi g");
+const { task } = require("hardhat/config");
 
 task("interact-contact")
   .addParam("addr", "fundme contact address")

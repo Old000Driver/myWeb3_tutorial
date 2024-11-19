@@ -1,6 +1,7 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("@chainlink/env-enc").config();
-require("./tasks/index")
+require("./tasks/index");
+require("hardhat-deploy");
 
 const { ProxyAgent, setGlobalDispatcher } = require("undici");
 const proxyAgent = new ProxyAgent("http://127.0.0.1:7897");
@@ -25,5 +26,13 @@ module.exports = {
     // Your API key for Etherscan
     // Obtain one at https://etherscan.io/
     apiKey: ETHERSCAN_API_KEY,
+  },
+  namedAccounts: {
+    firstAccount: {
+      default: 0,
+    },
+    secondAccount: {
+      default: 1,
+    },
   },
 };
