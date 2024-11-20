@@ -2,6 +2,9 @@ require("@nomicfoundation/hardhat-toolbox");
 require("@chainlink/env-enc").config();
 require("./tasks/index");
 require("hardhat-deploy");
+require("@nomicfoundation/hardhat-ethers");
+require("hardhat-deploy");
+require("hardhat-deploy-ethers");
 
 const { ProxyAgent, setGlobalDispatcher } = require("undici");
 const proxyAgent = new ProxyAgent("http://127.0.0.1:7897");
@@ -15,6 +18,10 @@ const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.27",
+  defaultNetwork: "hardhat",
+  mocha: {
+    timeout: 300000,
+  },
   networks: {
     sepolia: {
       url: SEPOLIA_URL,
@@ -35,4 +42,7 @@ module.exports = {
       default: 1,
     },
   },
+  gasReporter:{
+    enabled:true
+  }
 };
